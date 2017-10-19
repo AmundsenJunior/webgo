@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}} ({{.Year}})</title>
+</head>
+<body>
+<h1>{{.Name}}</h1>
+<p>Year: {{.Year}}</p>
+<p>Director: {{.Director.Fname}} {{.Director.Lname}}</p>
+<p>Writers:</p>
+<ul>
+    {{range .Writers}}
+    <li>{{.Fname}} {{.Lname}}</li>
+    {{end}}
+</ul>
+<p>Actors:</p>
+<ul>
+    {{range .Actors}}
+    <li>{{.Fname}} {{.Lname}}</li>
+    {{end}}
+</ul>
+</body>
+</html>

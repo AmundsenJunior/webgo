@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+{{template "Head" .}}
+<body>
+<p><strong>Films:</strong></p>
+<ul>
+    {{range .Films}}
+    <li><a href="{{tpn .}}.html">{{.Title}}</a></li>
+    {{end}}
+</ul></body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <tr>
+        {{range .Fields}}
+        <th>{{.Name}}</th>
+        {{end}}
+    </tr>
+    {{range .Records}}
+    <tr>
+        <td>{{.Open}}</td>
+        <td>{{.Close}}</td>
+    </tr>
+    {{end}}
+</table>
+
+</body>
+<html>

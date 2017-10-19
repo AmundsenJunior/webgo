@@ -1,0 +1,29 @@
+{{define "Head"}}
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+</head>
+{{end}}
+
+{{define "Index"}}
+<h1>{{.Name}}</h1>
+{{end}}
+
+{{define "Film"}}
+<h1>{{.Title}}</h1>
+<p><strong>Year:</strong> {{.Year}}</p>
+<p><strong>Director:</strong> {{printf "%s, %s" .Director.Lname .Director.Fname}}</p>
+<p><strong>Writers:</strong></p>
+<ul>
+    {{range sn .Writers}}
+    <li>{{printf "%s, %s" .Lname .Fname}}</li>
+    {{end}}
+</ul>
+<p><strong>Actors:</strong></p>
+<ul>
+    {{range sn .Actors}}
+    <li>{{printf "%s, %s" .Lname .Fname}}</li>
+    {{end}}
+</ul>
+{{end}}
+
