@@ -42,10 +42,10 @@ const (
 					</form>
 				</body>
 				</html>`
-	about      = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>About</title></head><body><p>It's me.</p><p>I'm here.</p></body></html>`
-	contact    = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Contact</title></head><body><a href="https://twitter.com/sergeography/">Get at me.</a></body></html>`
-	pong       = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Pong</title></head><body><strong>PONG</strong></body></html>`
-	fourohfour = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Not Found</title></head><body><p><strong>404</strong> Not found</p></body></html>'`
+	about    = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>About</title></head><body><p>It's me.</p><p>I'm here.</p></body></html>`
+	contact  = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Contact</title></head><body><a href="https://twitter.com/sergeography/">Get at me.</a></body></html>`
+	pong     = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Pong</title></head><body><strong>PONG</strong></body></html>`
+	notfound = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Not Found</title></head><body><p><strong>404</strong> Not found</p></body></html>'`
 )
 
 func main() {
@@ -97,6 +97,7 @@ func receive(conn net.Conn) Request {
 		}
 		i++
 	}
+
 	return request
 }
 
@@ -120,7 +121,7 @@ func mux(request Request) Response {
 			response.Code = "200"
 			response.Reason = "OK"
 		default:
-			response.Body = fourohfour
+			response.Body = notfound
 			response.Code = "404"
 			response.Reason = "Not Found"
 		}
@@ -135,7 +136,6 @@ func mux(request Request) Response {
 			response.Code = "200"
 			response.Reason = "OK"
 		}
-
 	}
 
 	return response
@@ -148,3 +148,4 @@ func respond(conn net.Conn, response Response) {
 	fmt.Fprint(conn, "\r\n")
 	fmt.Fprint(conn, response.Body)
 }
+

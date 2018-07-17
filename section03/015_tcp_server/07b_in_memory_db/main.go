@@ -64,6 +64,8 @@ func handle(conn net.Conn) {
 
 		switch fs[0] {
 		case "GET":
+		case "get":
+		case "g":
 			for _, k := range fs[1:] {
 				if v, ok := data[k]; ok {
 					fmt.Fprintf(conn, "%s: %s\n", k, v)
@@ -73,15 +75,21 @@ func handle(conn net.Conn) {
 			}
 			fmt.Fprintf(conn, "> ")
 		case "SET":
+		case "set":
+		case "s":
 			k := fs[1]
 			v := fs[2]
 			data[k] = v
 			fmt.Fprintf(conn, "> ")
 		case "DEL":
+		case "del":
+		case "d":
 			k := fs[1]
 			delete(data, k)
 			fmt.Fprintf(conn, "> ")
 		case "QUIT":
+		case "quit":
+		case "q":
 			fmt.Fprintf(conn, "Adios.\n")
 			conn.Close()
 		default:
